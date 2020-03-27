@@ -169,7 +169,7 @@ device=None, eval_hook=None, eval_func=None, *, progress_bar=False)
             prefix = ''
         for name, target in six.iteritems(self._targets):
             reporter.add_observer(prefix + name, target)
-            reporter.add_observers(prefix + name,
+            reporter.add_observers(prefix + name + '/',
                                    target.named_children())
 
         with reporter:

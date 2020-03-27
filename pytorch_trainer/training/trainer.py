@@ -151,7 +151,7 @@ class Trainer(object):
         for name, model in six.iteritems(updater.get_all_models()):
             reporter.add_observer(name, model)
             reporter.add_observers(
-                name, model.named_children())
+                name + '/', model.named_children())
         self.reporter = reporter
 
         self._done = False
