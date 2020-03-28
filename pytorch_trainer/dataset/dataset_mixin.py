@@ -9,17 +9,17 @@ def convert_to_tensor(func):
         var = func(*args, **kwargs)
 
         if isinstance(var, (tuple, list)):
-            return tuple([torch.Tensor(v) for v in var])
+            return tuple([torch.as_tensor(v) for v in var])
 
         elif isinstance(var, dict):
             array = {}
             for key, v in var.items():
-                v = torch.Tensor(v)
+                v = torch.as_tensor(v)
                 array[key] = v
 
             return array
         else:
-            return torch.Tensor(var)
+            return torch.as_tensor(var)
 
     return wrap
 
