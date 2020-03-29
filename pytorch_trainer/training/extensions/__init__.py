@@ -10,3 +10,4 @@ from pytorch_trainer.training.extensions.print_report import PrintReport  # NOQA
 from pytorch_trainer.training.extensions.progress_bar import ProgressBar  # NOQA
 from pytorch_trainer.training.extensions.value_observation import observe_lr  # NOQA
 from pytorch_trainer.training.extensions.value_observation import observe_value  # NOQA
+from pytorch_trainer.training.extensions.linear_shift import LinearShift  # NOQA
