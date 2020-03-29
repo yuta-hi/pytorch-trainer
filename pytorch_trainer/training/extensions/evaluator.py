@@ -235,12 +235,13 @@ device=None, eval_hook=None, eval_func=None, *, progress_bar=False)
             with reporter_module.report_scope(observation):
                 in_arrays = convert._call_converter(
                     self.converter, batch, self.device)
-                if isinstance(in_arrays, tuple):
-                    eval_func(*in_arrays)
-                elif isinstance(in_arrays, dict):
-                    eval_func(**in_arrays)
-                else:
-                    eval_func(in_arrays)
+                with torch.no_grad():
+                    if isinstance(in_arrays, tuple):
+                        eval_func(*in_arrays)
+                    elif isinstance(in_arrays, dict):
+                        eval_func(**in_arrays)
+                    else:
+                        eval_func(in_arrays)
 
             summary.add(observation)
 
